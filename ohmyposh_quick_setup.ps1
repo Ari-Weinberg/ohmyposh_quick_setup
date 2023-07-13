@@ -11,7 +11,7 @@ Write-Host "-------------------------------------------------------------------"
 
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Host "[-] This script requires administrative privileges. Please run the script as an administrator." -ForegroundColor Red
-    Exit
+    return
 }
 
 Write-Host "[+] Installing oh-my-posh via Winget" -ForegroundColor Cyan
