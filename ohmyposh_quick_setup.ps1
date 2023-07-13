@@ -90,8 +90,14 @@ if (-not (Test-Path -Path $PROFILE -PathType Leaf)) {
     New-Item -Path $PROFILE -ItemType File
 }
 
-Write-Output 'oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\night-owl.omp.json | Invoke-Expression' >> $PROFILE
-Write-Output 'Import-Module -Name Terminal-Icons' >> $PROFILE
-Write-Output 'Set-PSReadLineOption -PredictionSource History' >> $PROFILE
-Write-Output 'Set-PSReadLineOption -PredictionViewStyle ListView' >> $PROFILE
-Write-Output 'Set-PSReadLineOption -EditMode Windows' >> $PROFILE
+# Write-Output 'oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\night-owl.omp.json | Invoke-Expression' >> $PROFILE
+# Write-Output 'Import-Module -Name Terminal-Icons' >> $PROFILE
+# Write-Output 'Set-PSReadLineOption -PredictionSource History' >> $PROFILE
+# Write-Output 'Set-PSReadLineOption -PredictionViewStyle ListView' >> $PROFILE
+# Write-Output 'Set-PSReadLineOption -EditMode Windows' >> $PROFILE
+
+Add-Content -Path $PROFILE -Value 'oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\night-owl.omp.json | Invoke-Expression'
+Add-Content -Path $PROFILE -Value 'Import-Module -Name Terminal-Icons'
+Add-Content -Path $PROFILE -Value 'Set-PSReadLineOption -PredictionSource History'
+Add-Content -Path $PROFILE -Value 'Set-PSReadLineOption -PredictionViewStyle ListView'
+Add-Content -Path $PROFILE -Value 'Set-PSReadLineOption -EditMode Windows'
