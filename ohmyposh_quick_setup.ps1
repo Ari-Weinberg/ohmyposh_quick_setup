@@ -104,7 +104,7 @@ $jsonString | Set-Content -Path "C:\Users\$Env:UserName\AppData\Local\Packages\M
 Write-Host "[+] Installing extensions" -ForegroundColor Cyan
 # Install history and icons.
 Install-Module -Name PSReadLine -Scope CurrentUser -Force -SkipPublisherCheck
-Install-Module -Name  -Repository PSGallery -Force
+Install-Module -Name Terminal-Icons -Repository PSGallery -Force
 
 
 Write-Host "[+] Adding imports to Powershell profile" -ForegroundColor Cyan
