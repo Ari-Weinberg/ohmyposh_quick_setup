@@ -5,8 +5,6 @@ winget install JanDeDobbeleer.OhMyPosh -s winget
 
 Invoke-WebRequest -URI 'https://github.com/Ari-Weinberg/ohmyposh_quick_setup/raw/main/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf' -OutFile 'c:\windows\temp\jetbrains_mono.ttf'
 
-Install-Font -FontFilePath "c:\windows\temp\jetbrains_mono.ttf"
-
 function Install-Font {
     param (
         [Parameter(Mandatory=$true)]
@@ -37,3 +35,7 @@ function Install-Font {
 
     Write-Host "Font '$FontName' has been installed."
 }
+
+Install-Font -FontFilePath "c:\windows\temp\jetbrains_mono.ttf"
+
+
