@@ -83,18 +83,12 @@ $jsonContent.schemes += $schemesArray
 $jsonString = $jsonContent | ConvertTo-Json -Depth 10
 $jsonString | Set-Content -Path "C:\Users\$Env:UserName\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 
-Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
-Install-Module -Name Terminal-Icons -Repository PSGallery
+Install-Module -Name PSReadLine -Scope CurrentUser -Force -SkipPublisherCheck
+Install-Module -Name Terminal-Icons -Repository PSGallery -Force
 
 if (-not (Test-Path -Path $PROFILE -PathType Leaf)) {
     New-Item -Path $PROFILE -ItemType File
 }
-
-# Write-Output 'oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\night-owl.omp.json | Invoke-Expression' >> $PROFILE
-# Write-Output 'Import-Module -Name Terminal-Icons' >> $PROFILE
-# Write-Output 'Set-PSReadLineOption -PredictionSource History' >> $PROFILE
-# Write-Output 'Set-PSReadLineOption -PredictionViewStyle ListView' >> $PROFILE
-# Write-Output 'Set-PSReadLineOption -EditMode Windows' >> $PROFILE
 
 Add-Content -Path $PROFILE -Value 'oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\night-owl.omp.json | Invoke-Expression'
 Add-Content -Path $PROFILE -Value 'Import-Module -Name Terminal-Icons'
