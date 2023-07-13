@@ -51,7 +51,38 @@ $jsonContent.profiles.defaults = @{
     font = @{
         face = "JetBrainsMono NFM"
     }
+    colorScheme = "Dracula"
 }
+
+# Create the new "Dracula" scheme array
+$DraculaScheme = @{
+    name = "Dracula"
+    cursorColor = "#F8F8F2"
+    selectionBackground = "#44475A"
+    background = "#282A36"
+    foreground = "#F8F8F2"
+    black = "#21222C"
+    blue = "#BD93F9"
+    cyan = "#8BE9FD"
+    green = "#50FA7B"
+    purple = "#FF79C6"
+    red = "#FF5555"
+    white = "#F8F8F2"
+    yellow = "#F1FA8C"
+    brightBlack = "#6272A4"
+    brightBlue = "#D6ACFF"
+    brightCyan = "#A4FFFF"
+    brightGreen = "#69FF94"
+    brightPurple = "#FF92DF"
+    brightRed = "#FF6E6E"
+    brightWhite = "#FFFFFF"
+    brightYellow = "#FFFFA5"
+}
+
+$schemesArray = @($DraculaScheme)
+
+# Add the "schemes" array to the existing content
+$jsonContent.schemes += $schemesArray
 
 $jsonString = $jsonContent | ConvertTo-Json -Depth 10
 $jsonString | Set-Content -Path "C:\Users\$Env:UserName\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
