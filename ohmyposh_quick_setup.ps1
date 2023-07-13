@@ -40,4 +40,19 @@ Invoke-WebRequest -URI 'https://github.com/Ari-Weinberg/ohmyposh_quick_setup/raw
 
 Install-Font -FontFilePath "c:\windows\temp\jetbrains_mono.ttf"
 
+if (-not (Test-Path -Path $PROFILE -PathType Leaf)) {
+    New-Item -Path $PROFILE -ItemType File
+}
+
+$jsonContent = Get-Content -Path "C:\Users\$Env:UserName\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" -Raw | ConvertFrom-Json
+
+# Update the "defaults" section
+$jsonContent.profiles.defaults = @{
+    font = @{
+        face = "JetBrainsMono NFM"
+    }
+}
+
+$jsonString = $jsonContent | ConvertTo-Json -Depth 10
+$jsonString | Set-Content -Path "C:\Users\$Env:UserName\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 
