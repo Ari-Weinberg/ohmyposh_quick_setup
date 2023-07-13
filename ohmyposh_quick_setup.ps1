@@ -1,4 +1,4 @@
-# Set-ExecutionPolicy Bypass -Scope Process -Force
+Set-ExecutionPolicy Bypass -Force
 # Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
 
 winget install JanDeDobbeleer.OhMyPosh -s winget
