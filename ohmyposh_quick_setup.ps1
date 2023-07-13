@@ -9,6 +9,11 @@ Write-Host "" -ForegroundColor Cyan
 Write-Host '"Unable to detect font" warning can be ignored' -ForegroundColor Cyan
 Write-Host "-------------------------------------------------------------------" -ForegroundColor Cyan
 
+if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    Write-Host "[-] This script requires administrative privileges. Please run the script as an administrator." -ForegroundColor Red
+    Exit
+}
+
 Write-Host "[+] Installing oh-my-posh via Winget" -ForegroundColor Cyan
 # Install oh-my-posh with winget
 # https://ohmyposh.dev/
@@ -104,7 +109,7 @@ $jsonString | Set-Content -Path "C:\Users\$Env:UserName\AppData\Local\Packages\M
 Write-Host "[+] Installing extensions" -ForegroundColor Cyan
 # Install history and icons.
 Install-Module -Name PSReadLine -Scope CurrentUser -Force -SkipPublisherCheck
-Install-Module -Name Terminal-Icons -Repository PSGallery -Force
+Install-Module -Name Terminal-Icons -Scope CurrentUser -Repository PSGallery -Force
 
 
 Write-Host "[+] Adding imports to Powershell profile" -ForegroundColor Cyan
