@@ -9,12 +9,12 @@ Write-Host "" -ForegroundColor Cyan
 Write-Host '"Unable to detect font" warning can be ignored' -ForegroundColor Cyan
 Write-Host "-------------------------------------------------------------------" -ForegroundColor Cyan
 
-Write-Host "[+] Installing oh-my-posh via Winget" -ForegroundColor brightPurple
+Write-Host "[+] Installing oh-my-posh via Winget" -ForegroundColor Cyan
 # Install oh-my-posh with winget
 # https://ohmyposh.dev/
 winget install JanDeDobbeleer.OhMyPosh -s winget
 
-Write-Host "[+] Downloading Jetbrains Mono font" -ForegroundColor brightPurple
+Write-Host "[+] Downloading Jetbrains Mono font" -ForegroundColor Cyan
 # Download Jetbrains Mono font. Uses Nerdfont version 2.3.3, as some icons got removed in later versions
 Invoke-WebRequest -URI 'https://github.com/Ari-Weinberg/ohmyposh_quick_setup/raw/main/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf' -OutFile 'c:\windows\temp\jetbrains_mono.ttf'
 
@@ -33,12 +33,12 @@ Invoke-WebRequest -URI 'https://github.com/Ari-Weinberg/ohmyposh_quick_setup/raw
         $fontKeyPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts"
         $fontRegistry = Get-ItemProperty -Path $fontKeyPath
         if ($fontRegistry -and $fontRegistry."$FontName (TrueType)" -eq $FontFilePath) {
-            Write-Host "Font '$FontName' is already installed."
+            Write-Host "Font '$FontName' is already installed." -ForegroundColor Cyan
             return
         }
 
         # Install the font.
-        Write-Host "[+] Installing font '$FontName'..."
+        Write-Host "[+] Installing font '$FontName'" -ForegroundColor Cyan
 
         # Copy the font file to the Windows fonts folder.
         $fontsFolderPath = [System.IO.Path]::Combine([System.Environment]::GetFolderPath('Fonts'), "$FontName.ttf")
@@ -48,7 +48,7 @@ Invoke-WebRequest -URI 'https://github.com/Ari-Weinberg/ohmyposh_quick_setup/raw
         $fontNameKey = "$FontName (TrueType)"
         Set-ItemProperty -Path $fontKeyPath -Name $fontNameKey -Value $fontsFolderPath
 
-        Write-Host "[+] Font '$FontName' has been installed."
+        Write-Host "[+] Font '$FontName' has been installed." -ForegroundColor Cyan
     }
 }
 
