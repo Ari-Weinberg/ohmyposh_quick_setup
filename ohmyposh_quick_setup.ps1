@@ -87,7 +87,7 @@ Install-Module -Name PSReadLine -Scope CurrentUser -Force -SkipPublisherCheck
 Install-Module -Name Terminal-Icons -Repository PSGallery -Force
 
 if (-not (Test-Path -Path $PROFILE -PathType Leaf)) {
-    New-Item -Path $PROFILE -ItemType File
+    $null = New-Item -Path $PROFILE -ItemType File 
 }
 
 Add-Content -Path $PROFILE -Value 'oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\night-owl.omp.json | Invoke-Expression'
