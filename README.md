@@ -6,4 +6,3 @@ Run with:
 ```powershell
 Set-ExecutionPolicy Bypass -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://github.com/Ari-Weinberg/ohmyposh_quick_setup/raw/main/ohmyposh_quick_setup.ps1'))
 ```
-![Screenshot](Screenshot.png)
